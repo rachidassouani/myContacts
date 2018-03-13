@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://ultra9.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8"/>
+<title>My Contacts</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+	<header>
+		<div class="navbar navbar-primary">
+			<div class="container">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/Contacts/Index}">Search</a></li>
+					<li><a th:href="@{/Contacts/Adding}">Add Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
+
+	<section layout:fragment="content"></section>
+
+
+<footer>
+    <div class="navbar-fixed-bottom">
+      <div class="container">
+        <small>
+          Copyright @2018
+        </small>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

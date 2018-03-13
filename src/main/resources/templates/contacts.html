@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://ultra9.net.nz/thymeleaf/layout"
+	  layout:decorator="template">
+<head>
+<meta charset="UTF-8"/>
+<title>my Contacts</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body layout:fragment="content">
+ <div class="container spacer">
+   <div class="panel panel-info">
+     <div class="panel-heading">Searching for Contact!</div>
+     <div class="panel-body">
+     	<form action="Index" method="GET">
+	     	<label>Search</label>
+	     	<input type="text" name="motCle"/>
+	     	<button type="submit" class="btn btn-info">Search</button>
+  		</form>
+     </div>
+   </div>
+   
+ </div>
+ <div class="container">
+  <table class="table table-striped info">
+    <thead>
+      <tr>
+        <th class="active">Id</th> 
+        <th class="active">First Name</th> 
+        <th class="active">Last Name</th>
+        <th class="active">Date Naissance</th>  
+        <th class="active">Email</th> 
+        <th class="active">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="c: ${pageContacts}">
+        <td class="info" th:text="${c.id}"></td>
+        <td th:text="${c.firstName}"></td>
+        <td th:text="${c.lastName}"></td>
+        <td th:text="${c.dateNaissance}"></td>
+        <td th:text="${c.email}"></td>
+        <td th:text="${c.address}"></td>
+        <td>
+          <a  th:text="@{Update}" th:href="@{Updating(id=${c.id})}"></a>
+        </td>
+        <td >
+          <a onclick="return confirm('Are you sure ?')" th:text="@{Delete}" th:href="@{Delete(id=${c.id})}"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <ul class="pager">
+      <li  th:each="pages :${pagesCount}" th:class="${pages}==${pageCourante}?'active':''">
+        <a th:text="${pages}" th:href="@{Index(page=${pages}, motCle=${motCle})}"></a>
+      </li>
+    </ul>
+  </div>
+ </div> 
+</body>
+</html>
