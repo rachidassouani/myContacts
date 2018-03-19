@@ -12,8 +12,10 @@
 		<div class="navbar navbar-primary">
 			<div class="container">
 				<ul class="nav navbar-nav">
-					<li><a th:href="@{/Contacts/Index}">Search</a></li>
-					<li><a th:href="@{/Contacts/Adding}">Add Contact</a></li>
+					<li> <a th:text="${#httpServletRequest.remoteUser}" ></a></li>
+					<li><a th:href="@{/Index}">Search</a></li>
+					<li><a th:href="@{/Adding}">Add Contact</a></li>
+					<li><a th:href="@{/login?logout}" th:text="@{Logout}"> </a></li>
 				</ul>
 			</div>
 		</div>

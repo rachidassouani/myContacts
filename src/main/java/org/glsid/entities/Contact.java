@@ -9,36 +9,42 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Contact implements Serializable{
 	 @Id  @GeneratedValue
 	private Long id;
-	 @NotEmpty
-	 @Size(max=30)
-	private String firstName;
-	 @NotEmpty
-	 @Size(max=30)
-	private String lastName;
-	 @DateTimeFormat(pattern= "yyyy-MM-dd")
-	 @NotNull
-	private Date dateNaissance;
-	 @NotEmpty
-	 @Size(max=30)
-	private String email;
 	 
+	 @NotEmpty @Size(max=30)
+	private String firstName;
+	 
+	 @NotEmpty  @Size(max=30)
+	private String lastName;
+	 
+	 @DateTimeFormat(pattern= "yyyy-MM-dd") @NotNull
+	private Date dateNaissance;
+	 
+	 @NotEmpty @Email
+	private String email;
+	
+	 @NotEmpty @Size(max=50)
 	private String address;
+	
+	 private String photo;
+	
 	public Contact() {
 		super();
 	}
-	public Contact(String firstName, String lastName, Date dateNaissance, String email, String address) {
+	public Contact(String firstName, String lastName, Date dateNaissance, String email, String address, String photo) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateNaissance = dateNaissance;
 		this.email = email;
 		this.address = address;
+		this.photo = photo;
 	}
 	public Long getId() {
 		return id;
@@ -75,6 +81,12 @@ public class Contact implements Serializable{
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	public String getPhoto() {
+		return photo;
 	}
 	
 }

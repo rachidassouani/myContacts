@@ -1,0 +1,18 @@
+body{
+	height:1000px;
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover{
+	background-color: #5bc0de ;
+	color: #fff;
+}
+table img,
+form div img{
+	width: 100px;
+	height: 100px;
+}
+.label-danger{
+	font-size: 20px;
+}
